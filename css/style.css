@@ -1,3 +1,10 @@
 .bg {
     background-color: #a5a7a4;
 }
+.outline-none {
+    outline: none;
+    border: 1px solid rgb(21, 9, 9);
+    border-radius: 5px;
+    padding: 6px 10px;
+    background-color: rgb(255, 236, 236);
+}
