@@ -1,13 +1,14 @@
 // fectch api
-const restaurantThumnil = () => {
-    fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=a')
+const restaurantThumnil = (seacrh) => {
+    const url =`https://www.themealdb.com/api/json/v1/1/search.php?s=${seacrh}`
+    fetch(url)
     .then(res => res.json())
     .then(data => loadRestaurantDetails(data.meals))
 }
 
 const loadRestaurantDetails = (meal) => {
     const restaurantDetails = document.getElementById('restaurant-details');
-    console.log(meal)
+    restaurantDetails.innerHTML = ``
     meal.forEach( meals => {
         const createDiv = document.createElement('div');
         createDiv.classList.add('col');
@@ -24,4 +25,10 @@ const loadRestaurantDetails = (meal) => {
     })
 }
 
-restaurantThumnil()
+const searchWithName = () => {
+    const searchInput = document.getElementById('search-input');
+    const searchValue = searchInput.value;
+    restaurantThumnil(searchValue)
+    searchInput.value = ``;
+}
+restaurantThumnil('')
